@@ -37,10 +37,10 @@ public class FibonacciAndRiceController {
         }
     }
 
-    // Event: Calculate Rice Grains for 32 Squares //
+    // Event: Calculate Rice Grains for the Full Chessboard //
     @FXML
     private void handleCalculateRice() {
-        BigInteger total = riceGrainService.calculateRiceOnChessboard(32);
-        riceResultLabel.setText("Total grains on half a chessboard (32 squares):\n" + total.toString());
+        BigInteger total = riceGrainService.calculateRiceOnChessboard(64);
+        riceResultLabel.setText("Total grains on a chessboard (64 squares):\n" + total.toString());
     }
 }

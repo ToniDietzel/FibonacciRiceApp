@@ -28,6 +28,6 @@
 
     <!-- Rice Legend Section -->
     <Label text="Rice Grain Legend (Chessboard Problem)" styleClass="section-title"/>
-    <Button text="Calculate for 32 Squares" onAction="#handleCalculateRice"/>
+    <Button text="Calculate for 64 Squares" onAction="#handleCalculateRice"/>
     <Label fx:id="riceResultLabel" wrapText="true" textAlignment="CENTER"/>
 </VBox>

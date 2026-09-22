@@ -1,48 +1,107 @@
 # Fibonacci & Rice Grain Legend
 
-A small JavaFX desktop application that demonstrates two classic mathematical examples:
+A JavaFX desktop application for generating Fibonacci sequences and calculating the rice grain legend on a chessboard.
+Fibonacci & Rice Grain Legend combines classic mathematics with a compact JavaFX user interface and demonstrates practical Java programming with a clear separation between UI and logic.
+
+> **Portfolio project**  
+> This application was created as part of my vocational retraining as an IT specialist for application development and is intended to demonstrate practical Java programming, object-oriented design, JavaFX UI development, and mathematical problem solving.
+
+## Project Information
+
+- **Project:** Fibonacci & Rice Grain Legend
+- **Created:** 2025, as part of my vocational retraining as an IT specialist for application development
+- **Technology:** Java
+- **User interface:** JavaFX
+- **UI layout:** FXML
+- **Styling:** CSS
+- **Platform:** Windows
+- **JDK:** 25
+- **JavaFX version:** 25
+- **Author:** Toni Dietzel
+
+## Features
+
+### Fibonacci Sequence
 
 - Generate a Fibonacci sequence with a user-defined number of terms
-- Calculate the number of rice grains on 32 squares of a chessboard
+- Validation for positive integer input
+- Output in a text area with the calculated values
+- Support for larger values using `BigInteger`
 
-This project was created as part of my retraining to become an IT specialist for application development. It demonstrates my first practical experience with Java, JavaFX, FXML, and a basic separation between the user interface and application logic.
+### Rice Grain Legend
 
-**First created:** 2025-10-24  
-**Author:** Toni Dietzel
+- Calculate the total number of rice grains on the entire chessboard with 64 squares
+- Automatic doubling of the amount on each square
+- Clear mathematical output for the classic legend problem
 
-## Overview
+### User Interface
 
-The application has two sections:
+- Compact JavaFX application layout
+- Fixed-size window for a simple desktop experience
+- Clean separation between interface and business logic
+- FXML-based structure and CSS styling
 
-1. In the Fibonacci section, the user enters a positive number. After clicking **Generate Fibonacci**, the sequence is displayed in the output field.
-2. In the rice grain legend section, **Calculate for 32 Squares** calculates the total number of rice grains on the first half of a chessboard.
+## Requirements
 
-The user interface is intentionally compact and designed for a fixed window size.
+- Windows 10 or later
+- Java Development Kit (JDK) 25
+- JavaFX SDK 25 for Windows x64
+- Internet access on the first startup if JavaFX is not already available locally
 
-## Technical Overview
+The project is intentionally kept simple and does not require Maven or Gradle.
 
-| Area | Implementation |
-| --- | --- |
-| Programming language | Java |
-| User interface | JavaFX |
-| UI layout | FXML |
-| Styling | CSS |
-| Number handling | `BigInteger` for arbitrarily large integers |
-| Startup | Windows batch file `run-app.bat` |
+## Installation and Usage
 
-### Project Structure
+1. Download or clone this repository.
+2. Open the project folder.
+3. Double-click `run-app.bat`.
+4. If JavaFX is not available, the script downloads the SDK and extracts it into the project folder.
+5. The application compiles the Java source files and starts the JavaFX interface.
+
+Alternatively, run the batch file from a command prompt in the project folder:
+
+```bat
+run-app.bat
+```
+
+The script checks for a compatible JDK in the following locations:
 
 ```text
-.
-├── Main.java                       # JavaFX application entry point
-├── FibonacciAndRiceController.java # User interface event handling
-├── FibonacciService.java            # Fibonacci sequence calculation
-├── RiceGrainService.java            # Rice grain calculation
-├── layout.fxml                     # User interface layout
-├── style.css                       # Colors and styling
-├── run-app.bat                     # Compile and run on Windows
-└── README.md
+C:\Program Files\Java\jdk-25.0.2
+C:\Program Files\Microsoft\jdk-25.0.2.10-hotspot
 ```
+
+If the JDK is installed somewhere else, update the path in `run-app.bat` accordingly.
+
+## Project Structure
+
+```text
+FibonacciRiceApp/
+├── Main.java                       JavaFX application entry point
+├── FibonacciAndRiceController.java User interface event handling and input validation
+├── FibonacciService.java           Fibonacci sequence calculation
+├── RiceGrainService.java           Rice grain calculation
+├── layout.fxml                    JavaFX layout definition
+├── style.css                      Application styling
+├── run-app.bat                    Compile and start the application on Windows
+├── javaFx-sdk-25/                 Local JavaFX SDK directory (created automatically)
+├── .gitignore                     Excludes compiled files and local SDK files
+├── README.md                      Project documentation
+└── LICENSE                        Optional project license file (if added later)
+```
+
+## Architecture
+
+The application uses a simple layered structure:
+
+- `Main` starts the JavaFX application, loads the FXML file, and attaches the stylesheet.
+- `FibonacciAndRiceController` handles user input and connects the interface to the logic classes.
+- `FibonacciService` contains the Fibonacci calculation logic.
+- `RiceGrainService` contains the rice grain doubling calculation.
+- `layout.fxml` describes the user interface declaratively.
+- `style.css` defines the visual presentation.
+
+This separation keeps the calculations independent from the UI and makes future extensions easier.
 
 ## Mathematical Background
 
@@ -54,47 +113,17 @@ The sequence starts with `1, 1`. Each following term is calculated by adding the
 F(n) = F(n - 1) + F(n - 2)
 ```
 
-The application outputs exactly as many terms as specified in the input field.
+The application calculates exactly as many terms as requested by the user.
 
 ### Rice Grain Legend
 
-In the rice grain legend, the number of grains doubles on every square. For 32 squares, the result is:
+The rice grain legend doubles the number of grains on every square. For the full chessboard with 64 squares, the result is:
 
 ```text
-1 + 2 + 4 + ... + 2^31 = 2^32 - 1 = 4,294,967,295 grains
+1 + 2 + 4 + ... + 2^63 = 2^64 - 1 = 18,446,744,073,709,551,615 grains
 ```
 
-`BigInteger` prevents integer overflow and makes the calculation suitable for much larger values as well.
-
-## Requirements
-
-- Windows
-- JDK 25
-- JavaFX SDK 25 for Windows x64
-- Internet access on the first launch if the JavaFX SDK is not already in the project folder
-
-The project currently uses a simple file and batch-based structure and does not require Maven or Gradle.
-
-## Running the Application
-
-1. Clone the repository or download it as a ZIP file.
-2. Double-click `run-app.bat`.
-3. If JavaFX is not available, the script downloads the SDK and extracts it into the project folder.
-
-Alternatively, run the batch file from a command prompt in the project folder:
-
-```bat
-run-app.bat
-```
-
-The script looks for a suitable JDK installation at:
-
-```text
-C:\Program Files\Java\jdk-25.0.2
-C:\Program Files\Microsoft\jdk-25.0.2.10-hotspot
-```
-
-If the JDK is installed somewhere else, update `run-app.bat` accordingly.
+`BigInteger` prevents integer overflow and makes the calculation suitable for larger values as well.
 
 ## Publishing on GitHub
 
@@ -111,7 +140,7 @@ git push -u origin main
 
 Replace `YOUR-USERNAME` and the repository name with your own values. When creating the GitHub repository, do not automatically add another README or license so that the existing files can be uploaded without a conflict.
 
-The `.gitignore` file prevents compiled Java files, IDE settings, and the locally used JavaFX SDK from being published.
+The `.gitignore` file prevents compiled Java classes, IDE settings, and the locally used JavaFX SDK from being published.
 
 ## Usage
 
@@ -125,38 +154,28 @@ Invalid or non-positive inputs result in a clear error message.
 
 ### Rice Grain Calculation
 
-Click **Calculate for 32 Squares**. The total for the first 32 chessboard squares is then displayed.
+Click **Calculate for 64 Squares**. The total number of rice grains on the full chessboard is displayed.
 
-## Architecture
+## Development Notes
 
-The application uses a simple layered structure:
+The project demonstrates the following practical skills:
 
-- `Main` starts JavaFX, loads the FXML file, and attaches the stylesheet.
-- `FibonacciAndRiceController` handles user input and connects the interface to the services.
-- `FibonacciService` contains the Fibonacci sequence logic.
-- `RiceGrainService` contains the rice grain doubling logic.
-- `layout.fxml` declaratively describes the user interface.
-- `style.css` contains the visual styling.
-
-This separation keeps the calculations independent from the user interface and makes future extensions or tests easier.
-
-## What I Learned
-
-- Building a JavaFX application with `Application`, `Stage`, and `Scene`
-- Connecting FXML elements with controller methods using `@FXML`
-- Separating user interface code from application logic with service classes
-- Processing and validating user input
-- Using `BigInteger` for large integer calculations
-- Styling a user interface with JavaFX CSS
-- Automating compilation and startup with a Windows batch file
+- Java classes, control flow, and object-oriented structure
+- JavaFX application setup with `Application`, `Stage`, and `Scene`
+- FXML-based user interface creation
+- Event handling and user input validation with `@FXML`
+- Use of `BigInteger` for large integer calculations
+- Separation of UI logic and calculation logic with service classes
+- Styling with JavaFX CSS
+- Windows batch scripting for compilation and startup
 
 ## Known Limitations and Possible Extensions
 
-- The rice grain calculation is currently fixed at 32 squares.
+- The rice grain calculation is currently fixed at 64 squares.
 - The application is currently prepared for Windows and JDK 25.
 - There are no automated unit or UI tests yet.
 
-Possible next steps include allowing a user-defined number of squares, adding a graphical chessboard, adding automated tests, and using Maven or Gradle for the build.
+Possible next steps include allowing a user-defined number of squares, adding a visual chessboard, adding automated tests, and using Maven or Gradle for the build.
 
 ## License
 
