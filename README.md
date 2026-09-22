@@ -125,23 +125,6 @@ The rice grain legend doubles the number of grains on every square. For the full
 
 `BigInteger` prevents integer overflow and makes the calculation suitable for larger values as well.
 
-## Publishing on GitHub
-
-For the first publication, create an empty repository on [GitHub](https://github.com). Then publish the project from its folder using Git:
-
-```bat
-git init
-git add .
-git commit -m "Initial version of the Fibonacci and rice grain application"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/FibonacciRiceApp.git
-git push -u origin main
-```
-
-Replace `YOUR-USERNAME` and the repository name with your own values. When creating the GitHub repository, do not automatically add another README or license so that the existing files can be uploaded without a conflict.
-
-The `.gitignore` file prevents compiled Java classes, IDE settings, and the locally used JavaFX SDK from being published.
-
 ## Usage
 
 ### Fibonacci Sequence
