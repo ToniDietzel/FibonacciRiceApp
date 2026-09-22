@@ -162,4 +162,4 @@ Possible next steps include allowing a user-defined number of squares, adding a 
 
 ## License
 
-This project was created for learning and demonstration purposes. A license can be added once the conditions for reusing the source code have been decided.
+No license has been added yet. All rights are reserved by the author unless a license is added to this repository.
