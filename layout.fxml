@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- FXML Layout for Fibonacci & Rice Application -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="FibonacciAndRiceController"
+      alignment="CENTER"
+      spacing="12"
+      prefWidth="480" prefHeight="600">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Fibonacci Section -->
+    <Label text="Fibonacci Sequence Generator" styleClass="section-title"/>
+    <Label text="Enter the number of terms:"/>
+    <TextField fx:id="inputField" promptText="e.g. 15"/>
+    <Button text="Generate Fibonacci" onAction="#handleGenerateFibonacci"/>
+    <TextArea fx:id="fibonacciOutput" prefRowCount="6" wrapText="true" editable="false"/>
+
+    <Separator prefWidth="420"/>
+
+    <!-- Rice Legend Section -->
+    <Label text="Rice Grain Legend (Chessboard Problem)" styleClass="section-title"/>
+    <Button text="Calculate for 32 Squares" onAction="#handleCalculateRice"/>
+    <Label fx:id="riceResultLabel" wrapText="true" textAlignment="CENTER"/>
+</VBox>
